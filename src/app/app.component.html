@@ -52,21 +52,25 @@ ng-template [ngIf]= "count > 7"-->
 
 <br>
 
-<ul class="list-group mx-auto col-6">
+ <ul class="list-group mx-auto col-6">
   <li class="list-group-item" *ngFor="let pessoa of pessoas">
-    Nome: {{pessoa.nome}} {{pessoa.sobrenome}}
+    Nome: {{pessoa.firstName}} {{pessoa.lastName}}
   </li>
 </ul>
 
-<!-- ngFor por baixo dos panos -->
-<br>
+ <!-- ngFor por baixo dos panos  -->
+
+<!-- <br>
 <ul class="list-group mx-auto col-6">
   <ng-template ngFor let-pessoa [ngForOf]="pessoas"> 
     <li class="list-group-item">
-    Nome: {{pessoa.nome}} {{pessoa.sobrenome}}
+    Nome: {{pessoa.firstName}} {{pessoa.lastName}}, Idade: {{pessoa.age}}
     </li>
   </ng-template> 
-</ul>
+</ul> -->
+
+<app-list-people> </app-list-people>
+
 
 <div class="col-4 mx-auto my-3">
 <h3 appMarcaTexto corDeFundo="blue" corDoTexto="red"> {{nome}} </h3>
@@ -83,4 +87,15 @@ ng-template [ngIf]= "count > 7"-->
 <div class="col-4 mx-auto">
   <input type="text" class="form-control" placeholder="digite algo" [(ngModel)]="text">
   <h4>saída: {{text}} </h4>
+</div>
+
+<br> <br>
+<!-- implementando uma API -->
+<div class="container my-5">
+  <div class="row d-flex align-items-center justify-content-center">
+    <h2 class="text-center">Listagem de Personagens Rick and Morty</h2>
+    <div class="col-12">
+      <app-list-api></app-list-api>
+    </div>
+  </div>
 </div>

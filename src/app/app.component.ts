@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PeopleService } from './shared/services/people.service';
 
 @Component({
   selector: 'app-root',
@@ -12,26 +13,15 @@ export class AppComponent implements OnInit{
 
   pessoas = [
     {
-      nome: "Juliana",
-      sobrenome: "Ribeiro"
-    },
-    {
-      nome: "Ana Julia",
-      sobrenome: "Favero"
-    },
-    {
-      nome: "Julia",
-      sobrenome: "Brito"
-    },
-    {
-      nome: "Julia",
-      sobrenome: "Costa"
+      firstName: '',
+      lastName: '',
+      age: 0,
     }
   ];
 
-  constructor()
+  constructor(private peopleService: PeopleService)
   {
-
+    /* assinatura */
   }
   ngOnInit() {
     console.log(this.pessoas);
@@ -44,11 +34,21 @@ export class AppComponent implements OnInit{
         clearInterval(intervalo);
       }
     }, 1000)
+
+    this.getPeople();
   }
 
   clicou (nome: string): void
   {
     console.log('clicou aqui ', nome)
+  }
+
+  getPeople()
+  {
+    this.peopleService.getpeople().subscribe(people  =>
+      {
+        this.pessoas = people;
+      })
   }
 }
 
